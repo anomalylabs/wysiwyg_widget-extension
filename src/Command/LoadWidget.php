@@ -31,11 +31,11 @@ class LoadWidget
     public function handle(ConfigurationRepositoryInterface $configuration)
     {
         /* @var ConfigurationInterface $content */
-        $content = $configuration->get('anomaly.extension.wysiwyg_widget::wysiwyg', $this->widget->getId());
+        $content = $configuration->get('anomaly.extension.wysiwyg_widget::content', $this->widget->getId());
 
         /* @var EditorFieldTypePresenter $presenter */
         if ($presenter = $content->getFieldTypePresenter('value')) {
-            $this->widget->addData('content', $presenter->parsed());
+            $this->widget->addData('content', $presenter->parse());
         }
     }
 
